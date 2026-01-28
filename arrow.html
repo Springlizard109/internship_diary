@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Arrow Function Demo</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #eef6fb;
+            text-align: center;
+            padding-top: 50px;
+        }
+        input, button {
+            padding: 8px;
+            margin: 5px;
+        }
+        #output {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Arrow Function Examples</h2>
+
+    <input type="text" id="name" placeholder="Enter your name">
+    <br>
+    <input type="number" id="num1" placeholder="Number 1">
+    <input type="number" id="num2" placeholder="Number 2">
+    <br>
+
+    <button onclick="sayHello()">Say Hello</button>
+    <button onclick="addNumbers()">Add</button>
+    <button onclick="squareNumber()">Square</button>
+    <button onclick="checkEvenOdd()">Even / Odd</button>
+
+    <div id="output"></div>
+
+    <script>
+        // 1️⃣ Arrow function with NO parameter (multiple lines)
+        const sayHello = () => {
+            let name = document.getElementById("name").value;
+            document.getElementById("output").innerHTML = "Hello " + name + " 👋";
+        };
+
+        // 2️⃣ Arrow function WITH parameters (multiple lines)
+        const add = (a, b) => {
+            return a + b;
+        };
+
+        const addNumbers = () => {
+            let a = Number(document.getElementById("num1").value);
+            let b = Number(document.getElementById("num2").value);
+            document.getElementById("output").innerHTML = "Sum = " + add(a, b);
+        };
+
+        // 3️⃣ Arrow function with SINGLE parameter (single line)
+        const square = x => x * x;
+
+        const squareNumber = () => {
+            let n = Number(document.getElementById("num1").value);
+            document.getElementById("output").innerHTML = "Square = " + square(n);
+        };
+
+        // 4️⃣ Arrow function with parameters (single line logic)
+        const isEven = n => n % 2 === 0 ? "Even" : "Odd";
+
+        const checkEvenOdd = () => {
+            let n = Number(document.getElementById("num1").value);
+            document.getElementById("output").innerHTML = "Number is " + isEven(n);
+        };
+    </script>
+
+</body>
+</html>
