@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Search</title>
+    <style>
+        #productContainer div {
+            border: 1px solid #ccc;
+            padding: 10px;
+            margin: 10px 0;
+            width: 200px;
+        }
+        img {
+            width: 80%;
+        }
+    </style>
+</head>
+<body>
+
+    <input type="text" id="myInput" placeholder="search product">
+    <button onclick="onSearch()">Submit</button>
+
+    
+    <div id="productContainer"></div>
+
+    <script>
+        let product = [
+            { name: "laptop", price: 2000, img: "https://m.media-amazon.com/images/I/71pKJ+Mjd8L._AC_SX416_CB1169409_QL70_.jpg"},
+            { name: "mobile", price: 1000, img: "https://m.media-amazon.com/images/I/616-Eh2FbPL._AC_UY327_FMwebp_QL65_.jpg"},
+            { name: "headphone", price: 500, img: "https://m.media-amazon.com/images/I/51K8eJaYsKL._AC_UY327_FMwebp_QL65_.jpg"},
+            { name: "watch", price: 300, img: "https://m.media-amazon.com/images/I/61JDO9NNOiL._AC_UL480_FMwebp_QL65_.jpg"},
+            { name: "tablet", price: 800, img: "https://m.media-amazon.com/images/I/71khUMY8l+L._AC_UY327_FMwebp_QL65_.jpg"},
+        ];
+
+
+        let productContainer = document.getElementById('productContainer');
+
+        function displayProducts(products) {
+            productContainer.innerHTML = "";
+            products.forEach(product => {
+                const productElement = document.createElement('div');
+                productElement.innerHTML = `
+                    <img src="${product.img}" alt="${product.name}">
+                    <h3>${product.name}</h3>
+                    <p>Price: ₹${product.price}</p>
+                `;
+                productContainer.appendChild(productElement);
+            });
+        }
+
+        function onSearch() {
+            const searchTerm = document.getElementById('myInput').value.toLowerCase();
+            const filteredProducts = product.filter(p =>
+                p.name.toLowerCase().includes(searchTerm)
+            );
+            displayProducts(filteredProducts);
+        }
+
+        
+        displayProducts(product);
+    </script>
+</body>
+</html>
