@@ -1,33 +1,21 @@
-import streamlit as st
-from resume_parser import extract_text
-from ats_logic import calculate_ats_score, recommend_jobs
+from graph import build_graph
 
-st.set_page_config(page_title="Resume ATS Analyzer")
+graph = build_graph()
 
-st.title("📄 Resume ATS Analyzer")
-st.write("Upload your resume and get your ATS score with job recommendations.")
+question = input("Ask something: ")
 
-uploaded_file = st.file_uploader("Upload your resume (PDF only)", type=["pdf"])
+result = graph.invoke({"question": question})
 
-if uploaded_file:
+print(result["answer"])
 
-    resume_text = extract_text(uploaded_file)
+while True:
+    
+    question = input("\nAsk something: ")
 
-    score, matched_skills = calculate_ats_score(resume_text)
-    recommendations = recommend_jobs(resume_text)
+    if question.lower() == "exit":
+        break
 
-    st.subheader("📊 ATS Score")
-    st.progress(int(score))
-    st.write(f"Your ATS Score: {score} / 100")
+    result = graph.invoke({"question": question})
 
-    st.subheader("✅ Matched Skills")
-    if matched_skills:
-        for skill in matched_skills:
-            st.write(f"- {skill}")
-    else:
-        st.write("No matching skills found.")
-
-    st.subheader("💼 Top Job Recommendations")
-
-    for job in recommendations:
-        st.write(f"{job['title']} — Match: {job['match']}%")
+    print("\nAnswer:\n")
+    print(result["answer"])
