@@ -1,0 +1,66 @@
+~<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Virtual Diary</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+    <h1>📔 My Virtual Diary</h1>
+    <p>A safe place to write everyday thoughts</p>
+</header>
+
+<nav>
+    <a href="#new-entry">New Entry</a>
+    <a href="#entries">My Entries</a>
+</nav>
+
+<main>
+
+    <section id="new-entry" class="card">
+        <h2>Write a New Entry</h2>
+
+        <form>
+            <label for="title">Title</label>
+            <input type="text" id="title" placeholder="Today was..." required>
+
+            <label for="date">Date</label>
+            <input type="date" id="date" required>
+
+            <label for="content">Your Thoughts</label>
+            <textarea id="content" rows="6" placeholder="Write freely..." required></textarea>
+
+            <button type="submit">Save Entry</button>
+        </form>
+    </section>
+
+    <section id="entries">
+        <h2>Previous Entries</h2>
+
+        <article class="entry">
+            <h3>Day 1</h3>
+            <time>20 December 2025</time>
+            <p>
+                started working on my virtual diary today.
+                <strong>Styling</strong>
+            </p>
+        </article>
+
+        <article class="entry">
+            <h3>random</h3>
+            <time>20 December 2025</time>
+            <p>
+                this is a random entry
+                <em>linkcode</em>
+            </p>
+        </article>
+    </section>
+
+</main>
+
+<footer>Good Night</footer>
+
+</body>
+</html>
